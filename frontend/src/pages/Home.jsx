@@ -6,8 +6,9 @@ const Home = () => {
 	return (
 		<div className='font-poppins'>
 			<Navbar />
-			
-			<FormTemplatesList />
+			<div className='relative top-14'> 
+				<FormTemplatesList />
+			</div>
 		</div>
 	)
 }
