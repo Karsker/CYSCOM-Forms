@@ -32,6 +32,7 @@ const NewForm = () => {
 			setProperties(newState);
 			console.log('Form updated');
 		}
+		
 	}
 
 	function addQuestion() {
@@ -50,7 +51,7 @@ const NewForm = () => {
 	}
 
 	return (
-		<div className='font-comic-neue flex flex-col items-center bg-[#f0ebf8] h-screen overflow-y-auto overflow-x-hidden'>
+		<div className='font-poppins flex flex-col items-center bg-[#f0ebf8] h-screen overflow-y-auto overflow-x-hidden'>
 			<div className='z-10 fixed top-0 left-0 w-full'>
 			<FormTopBar />
 				<div className='flex justify-center gap-x-5 text-md bg-[#191919] py-2'>
