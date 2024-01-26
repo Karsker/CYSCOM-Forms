@@ -3,13 +3,33 @@ import FormTopBar from '../components/FormTopBar'
 import FormTopControls from '../components/FormTopControls'
 import QuestionsPanel from '../components/QuestionsPanel'
 import QuestionBlock from '../components/QuestionBlock'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+
 
 const NewForm = () => {
-	const [properties, setProperties] = useState({title:'New Form', description: 'Blank form', fields: [
-	]});
+
+	// Change the title of the document whenever it loads
+	useEffect(() => {
+		document.title = 'New Form';
+	}, []);
+	
+	// Properties of the form
+	const [properties, setProperties] = useState({
+		title:'New Form', 
+		description: 'Blank form', 
+		fields: [],
+		responses: []
+	});
+	console.log(properties);
+
+	// State for storing current tab, identified by its color
 	const [tabColors, setTabColors] = useState(['text-blue-300', 'text-white', 'text-white']);
+
+	// Function to update the form properties for change in any property
 	function handleChange(title, description, fields) {
+		// At a time only one of the properties is not null
+
 		if (title != null) {
 			let newState = {...properties};
 			newState['title'] = title;
@@ -20,6 +40,13 @@ const NewForm = () => {
 		if (description != null) {
 			let newState = {...properties};
 			newState['description'] = description;
+			setProperties(newState);
+			console.log('Value updated');
+			console.log(properties);
+		}
+		if (fields != null) {
+			let newState = {...properties};
+			newState['fields'] = fields;
 			setProperties(newState);
 			console.log('Value updated');
 			console.log(properties);
@@ -35,7 +62,8 @@ const NewForm = () => {
 		
 	}
 
-	function addQuestion() {
+	// Function to add a question block to the panel
+	function handleAddQuestion() {
 		let newState = {...properties};
 		newState['fields'].push({
 			question: 'Question',
@@ -44,6 +72,9 @@ const NewForm = () => {
 		});
 		setProperties(newState);
 	}
+
+	// Function to delete a question block from the panel
+	// Each question is identified by its index in the array
 	function handleDelete(quesId) {
 		let newState = {...properties};
 		newState['fields'].splice(quesId,1);
@@ -61,7 +92,7 @@ const NewForm = () => {
 				</div>
 			</div>
 			<div className='relative top-[150px]'>
-				{tabColors[0] == 'text-blue-300'?(<QuestionsPanel formProps={properties} formChange={handleChange} fieldChange={editField} addQuestion={addQuestion} handleDelete={handleDelete}/>):''}
+				{tabColors[0] == 'text-blue-300'?(<QuestionsPanel formProps={properties} formChange={handleChange} fieldChange={editField} addQuestion={handleAddQuestion} handleDelete={handleDelete}/>):''}
 
 			</div>
 			

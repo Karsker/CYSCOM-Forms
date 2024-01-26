@@ -35,9 +35,9 @@ const MultipleChoiceBlock = ( {quesId} ) => {
             <input className='bg-transparent text-xl border-none outline-none w-full' value={desc['ques']} onChange = {(e) => handleQuesChange(e.target.value)}/>
             {desc['choices'].map((e, index) => {
                 return (
-                <div className='flex gap-2 space-around items-center'>
-                    <MultipleChoiceField key={index} nameVal = {quesId} choiceNumer={index}/>
-                    <button className='bg-black text-white h-8 w-8 my-2 rounded-full' onClick={() => handleDeleteChoice(index)}>X</button>
+                <div className='flex gap-2 space-around items-center' key={index}>
+                    <MultipleChoiceField  nameVal = {quesId} choiceNumber={index}/>
+                    <button className='bg-black text-white h-5 w-5 text-sm my-2 rounded-full' onClick={() => handleDeleteChoice(index)}>X</button>
                 </div>)
             })}
             <button className='bg-black px-3 py-1 text-white rounded-sm my-2' onClick = {() => handleAddChoice()}>Add choice</button>

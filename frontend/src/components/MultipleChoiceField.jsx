@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 
-const MultipleChoiceField = ({ nameVal, choiceNumer }) => {
+const MultipleChoiceField = ({ nameVal, choiceNumber }) => {
     
-    const [value, setValue] = useState(`Choice ${choiceNumer}`);
+    const [value, setValue] = useState(`Choice ${choiceNumber}`);
     console.log(nameVal);
     return (
         <div>

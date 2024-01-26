@@ -4,9 +4,9 @@ import NewFormPlate from './NewFormPlate'
 const FormTemplatesList = () => {
   return (
     <div className='w-screen h-[250px] bg-slate-100 flex items-center justify-center text-lg'>
-        <Link to='/newform'>
+        <a href='http://localhost:5173/newform' target="_blank">
             <NewFormPlate />
-        </Link>
+        </a>
     </div>
   )
 }
